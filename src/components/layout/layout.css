@@ -1,0 +1,39 @@
+.layout-wrapper{
+    width: 100vw;
+    height: 100vh;
+}
+
+.layout-container{
+    height: 100%;
+    margin: 0 auto;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 5px 25px #cccccc;
+    height: 50px;
+    position: relative;
+    z-index: 10;
+}
+
+.body{
+    display: flex;
+    height: calc(100% - 50px);
+}
+
+.menu{
+    list-style: none;
+    width: 200px;
+    box-shadow: 5px 25px 30px #cccccc;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.content{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
