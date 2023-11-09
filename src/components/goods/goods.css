@@ -1,0 +1,24 @@
+.goods-wrapper {
+    /* border: 2px solid red; */
+
+    background-color: rgb(229, 235, 235);
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.goods-container {
+    /* border: 2px solid blue; */
+
+    width: 80%;
+    /* height: 100%; */
+}
+
+.goods-title__search {
+    margin-left: 10px;
+
+}

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
 import "./layout.css";
 import { useRef } from "react";
 
 const Layout = () => {
   const [count, setCount] = useState(0);
-  const socket = io("http://localhost:3001");
+  // const socket = io("http://localhost:3001");
 
   useEffect(() => {
     const connectFn = () => {
@@ -18,12 +18,12 @@ const Layout = () => {
       setCount(data.count);
     };
 
-    socket.on("connect", connectFn);
-    socket.on("countConactions", countConactions);
+    // socket.on("connect", connectFn);
+    // socket.on("countConactions", countConactions);
 
     return () => {
-      socket.off("connect", connectFn);
-      socket.off("countConactions", countConactions);
+      // socket.off("connect", connectFn);
+      // socket.off("countConactions", countConactions);
     };
   }, []);
 
