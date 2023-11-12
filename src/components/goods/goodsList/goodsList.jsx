@@ -13,8 +13,8 @@ const GoodsList = ({ list }) => {
   );
 };
 
-export default GoodsList;
-
 GoodsList.propTypes = {
   list: PropTypes.arrayOf(PropTypes.object),
 };
+
+export default GoodsList;

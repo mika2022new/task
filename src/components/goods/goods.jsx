@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { GoodsList } from "../goodsList";
-
+import { GoodsList } from "./goodsList";
 import "./goods.css";
 
 const Goods = () => {
@@ -71,5 +70,3 @@ const Goods = () => {
 };
 
 export default Goods;
-
-// 11.44

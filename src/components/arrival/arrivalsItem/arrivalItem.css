@@ -1,0 +1,14 @@
+.item-content {
+    display: flex;
+    gap: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 35px;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.item-content:hover {
+    box-shadow: 25px 25px 40px -14px #c7c7c7;
+
+}
