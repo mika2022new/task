@@ -5,7 +5,7 @@ export const orders = [
       date: '2017-06-29 12:09:33',
       description: 'desc',
       get products () { 
-        return products.map((item) => item.order === this.id);
+        return products.filter((item) => item.order === this.id);
       },
     },
     {
@@ -14,7 +14,7 @@ export const orders = [
       date: '2017-06-29 12:09:33',
       description: 'desc',
       get products () { 
-        return products.map((item) => item.order === this.id);
+        return products.filter((item) => item.order === this.id);
       },
     },
     {
@@ -22,7 +22,7 @@ export const orders = [
       title: 'Order 3',
       date: '2017-06-29 12:09:33',
       get products () { 
-        return products.map((item) => item.order === this.id);
+        return products.filter((item) => item.order === this.id);
       },
     },
   ];

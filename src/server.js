@@ -25,7 +25,8 @@ app.use(cors());
 // });
 
 app.get("/orders", (req, res) => {
-    res.send(orders);
+    const newOrders = orders.map((item) => ({ ...item, products: item.products }));
+  res.send(newOrders);
 });
 
 app.get("/products", (req, res) => {

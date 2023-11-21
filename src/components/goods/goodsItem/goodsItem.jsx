@@ -1,10 +1,7 @@
 import PropTypes from "prop-types";
 import "./goodsItem.css";
 
-const GoodsItem = ({ item }) => {
-  const priceDefault = item.price.find((item) => item.isDefault);
-  const priceNOTDefault = item.price.filter((item) => !item.isDefault);
-
+function getLongItem(item, priceNOTDefault, priceDefault) {
   return (
     <div className="item">
       <div className="name">{item.title}</div>
@@ -19,14 +16,33 @@ const GoodsItem = ({ item }) => {
         ))}
         {priceDefault && <div className="price__curency">{`${priceDefault.value} ${priceDefault.symbol}`}</div>}
       </div>
-      {/* <div className="arrival"></div> */}
     </div>
     );
+}
+
+function getShortItem(title) {
+  return (
+    <div className="item">
+      <div className="name">{title}</div>
+
+      <h4>Free</h4>
+      <h4>Del</h4>
+
+    </div>
+    );
+}
+
+const GoodsItem = ({ item, short = false }) => {
+  const priceDefault = item.price.find((item) => item.isDefault);
+  const priceNOTDefault = item.price.filter((item) => !item.isDefault);
+
+  return short ? getShortItem(item.title) : getLongItem(item, priceNOTDefault, priceDefault);
 };
 
 export default GoodsItem;
 
 GoodsItem.propType = {
   item: PropTypes.object,
+  short: PropTypes.bool,
 };
 
