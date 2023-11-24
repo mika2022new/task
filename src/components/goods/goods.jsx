@@ -1,51 +1,27 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { GoodsList } from "./goodsList";
 import "./goods.css";
+import { useSelector } from "react-redux";
 
 const Goods = () => {
 
-  const [goods, setGoods] = useState(null);
+  const goodsInit = useSelector((state) => state.products.productsList);
+  const typesGoods = useSelector((state) => state.products.types);
 
-  const initGoodsRef = useRef(null);
+  const [goods, setGoods] = useState(goodsInit);
 
-  const [typesGoods, setTypesGoods] = useState(null);
-
-  const [isLoading, setisLoading] = useState(true);
-
-  useEffect(() => {
-
-    fetch("http://localhost:3002/products")
-    .then((respons) => respons.json())
-
-    .then((data) => {
-      const typesList = data.map((item) => item.type);
-      const setType = new Set(typesList);
-
-      setGoods(data);
-      setTypesGoods([...setType]);
-
-      initGoodsRef.current = data;
-      setisLoading(false);  
-
-    });
-
-  }, []);
-  
   const handleChangeSelectType = (e) =>  {
-
     const { value } = e.target;
 
     if(value === "all") {
-      setGoods(initGoodsRef.current);
+      setGoods(goodsInit);
     } else {
-      setGoods(initGoodsRef.current.filter(item => item.type === e.target.value));
+      setGoods(goodsInit.filter(item => item.type === e.target.value));
     }
   };
 
-  return isLoading ? (
-    <h1>Loading...</h1>
-  ): (
-    <>
+  return (
+  <>
       <div className="goods-wrapper">
         <div className="goods-container">
           <div className="goods-title">

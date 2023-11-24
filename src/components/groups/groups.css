@@ -12,11 +12,9 @@
 
 .orders {
     flex: 1;
-    /* border: 1px solid; */
 
 }
 
 .products {
     flex: 2;
-    /* border: 1px solid; */
 }

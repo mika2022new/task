@@ -80,9 +80,9 @@ export const orders = [
       },
       price: [
         {value: 100, symbol: 'USD', isDefault: 0},
-        {value: 200, symbol: 'UAH', isDefault: 1}
+        {value: 2700, symbol: 'UAH', isDefault: 1}
       ],
-      order: 1,
+      order: 3,
       date: '2017-06-29 12:09:33'
     },
   ];
