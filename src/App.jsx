@@ -8,6 +8,8 @@ import { Settings } from "./components/settings";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { useEffect } from "react";
+import { setAllOrders } from "./store/ordersSlice";
+import { setAllProducts } from "./store/productsSlice";
 
 function App() {
 
@@ -20,12 +22,18 @@ function App() {
   useEffect(() => {
     fetch("http://localhost:3002/products")
     .then((respons) => respons.json())
-    .then((data) => dispatch({ type: "setAllProducts",payload:data}));
+    .then((data) => {
+      // dispatch({ type: "setAllProducts",payload:data})
+      dispatch(setAllProducts(data));
+
+    });
 
     fetch("http://localhost:3002/orders")
     .then((respons) => respons.json())
     .then((data) => {
-      dispatch({type:"setAllOrders",payload:data})
+      // dispatch({type:"setAllOrders",payload:data})
+      dispatch(setAllOrders(data));
+
     });
 
   },[])

@@ -1,21 +1,27 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
+
+import { useSelector} from "react-redux";
+
 import { ArrivalList } from "./arrivalList";
 import "./arrival.css";
 
 const Arrival = () => {
+  
+  const ordersList = useSelector((state) => state.orders.ordersList);
+  const isLoading = useSelector((state) => state.orders.isLoading);
 
-  const [ordersList, setOrdersList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [ordersList, setOrdersList] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    fetch("http://localhost:3002/orders")
-    .then((respons) => respons.json())
+//   useEffect(() => {
+//     fetch("http://localhost:3002/orders")
+//     .then((respons) => respons.json())
 
-    .then((data) => {
-      setOrdersList(data);
-      setIsLoading(false);
-    });
-}, []);
+//     .then((data) => {
+//       setOrdersList(data);
+//       setIsLoading(false);
+//     });
+// }, []);
 
 return isLoading ? (
   <h1>Loading Arrivals...</h1>

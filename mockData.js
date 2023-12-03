@@ -49,10 +49,29 @@ export const orders = [
     },
     {
       id: 2,
-      serialNumber: 1234,
+      serialNumber: 12345,
       isNew: 1,
       photo: 'pathToFile.jpg',
       title: 'Product 2',
+      type: 'Mouse',
+      specification: 'Specification 1',
+      guarantee: {
+        start: '2017-06-29 12:09:33',
+        end: '2017-06-29 12:09:33'
+      },
+      price: [
+        {value: 1100, symbol: 'USD', isDefault: 0},
+        {value: 2500, symbol: 'UAH', isDefault: 1}
+      ],
+      order: 2,
+      date: '2017-06-29 12:09:33'
+    },
+    {
+      id: 3,
+      serialNumber: 1234,
+      isNew: 1,
+      photo: 'pathToFile.jpg',
+      title: 'Product 3',
       type: 'Monitors',
       specification: 'Specification 1',
       guarantee: {
@@ -63,15 +82,15 @@ export const orders = [
         {value: 100, symbol: 'USD', isDefault: 0},
         {value: 2600, symbol: 'UAH', isDefault: 1}
       ],
-      order: 2,
+      order: 3,
       date: '2017-06-29 12:09:33'
     },
     {
-      id: 3,
+      id: 4,
       serialNumber: 12345,
       isNew: 1,
       photo: 'pathToFile.jpg',
-      title: 'Product 3',
+      title: 'Product 4',
       type: 'Keyboard',
       specification: 'Specification 3',
       guarantee: {
