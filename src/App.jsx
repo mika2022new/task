@@ -11,6 +11,10 @@ import { useEffect } from "react";
 import { setAllOrders } from "./store/ordersSlice";
 import { setAllProducts } from "./store/productsSlice";
 
+import { fetchAllProducts } from "./store/old_reducerProducts";
+import { fetchAllOrders } from "./store/old_reducerOrders";
+
+
 function App() {
 
   const dispatch = useDispatch();
@@ -18,27 +22,41 @@ function App() {
   const isLoadingProducts = useSelector((state) => state.products.isLoading);
   const isLoadingOrders = useSelector((state) => state.orders.isLoading);
 
+  const isLoadingGood = !isLoadingProducts && !isLoadingOrders;
+
+  const isErrorProducts = useSelector((state) => state.products.isErrors);
+  const isErrorOrders = useSelector((state) => state.orders.isErrors);
+
+  const isErrorGood = !isErrorProducts && !isErrorOrders;
+
+  console.log('isLoadingProducts, isLoadingOrders, isErrorProducts, isErrorOrders', {isLoadingProducts, isLoadingOrders, isErrorProducts, isErrorOrders});
 
   useEffect(() => {
-    fetch("http://localhost:3002/products")
-    .then((respons) => respons.json())
-    .then((data) => {
-      // dispatch({ type: "setAllProducts",payload:data})
-      dispatch(setAllProducts(data));
+    // fetch("http://localhost:3002/products")
+    // .then((respons) => respons.json())
+    // .then((data) => {
+    //   dispatch({ type: "setAllProducts",payload:data})
+    //   // dispatch(setAllProducts(data));
+    // });
 
-    });
+    dispatch(fetchAllProducts);
 
-    fetch("http://localhost:3002/orders")
-    .then((respons) => respons.json())
-    .then((data) => {
-      // dispatch({type:"setAllOrders",payload:data})
-      dispatch(setAllOrders(data));
+    // fetch("http://localhost:3002/orders")
+    // .then((respons) => respons.json())
+    // .then((data) => {
+    //   dispatch({type:"setAllOrders",payload:data})
+    //   // dispatch(setAllOrders(data));
+    // });
 
-    });
+    dispatch(fetchAllOrders);
 
-  },[])
 
-  return (!isLoadingOrders && ! isLoadingProducts &&
+  },[]);
+
+  return (
+    isLoadingGood &&
+    isErrorGood && (
+
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -50,7 +68,7 @@ function App() {
         </Route>
       </Routes>
     </>
-  );
+  ));
 }
 
 export default App;

@@ -1,20 +1,26 @@
-// import { createStore } from "redux";
-// import { rootReducer } from "./rootReducer";
+import { createStore, applyMiddleware } from "redux";
+import { rootReducer } from "./old_rootReducer";
 
-// import { reducerOrders } from './reducerOrders';
-// import { reducerProducts } from './reducerProducts';
+import { reducerOrders } from './old_reducerOrders';
+import { reducerProducts } from './old_reducerProducts';
 
-// export const store = createStore(rootReducer);
+import { thunk } from 'redux-thunk';
 
-import { configureStore } from '@reduxjs/toolkit';
+export const store = createStore(rootReducer, applyMiddleware(thunk));
 
-import { ordersReducer } from './ordersSlice';
-import { productsReducer } from './productsSlice';
+// import { configureStore } from '@reduxjs/toolkit';
+
+// import { ordersReducer } from './ordersSlice';
+// import { productsReducer } from './productsSlice';
 
 
-export const store = configureStore({
-    reducer: {
-        orders: ordersReducer,
-        products: productsReducer,
-    },
-});
+// export const store = configureStore({
+//     reducer: {
+//         orders: ordersReducer,
+//         products: productsReducer,
+//     },
+// });
+
+
+
+// 1.06
