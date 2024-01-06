@@ -29,7 +29,7 @@ function App() {
 
   const isErrorGood = !isErrorProducts && !isErrorOrders;
 
-  console.log('isLoadingProducts, isLoadingOrders, isErrorProducts, isErrorOrders', {isLoadingProducts, isLoadingOrders, isErrorProducts, isErrorOrders});
+  // console.log('isLoadingProducts, isLoadingOrders, isErrorProducts, isErrorOrders', {isLoadingProducts, isLoadingOrders, isErrorProducts, isErrorOrders});
 
   useEffect(() => {
     // fetch("http://localhost:3002/products")

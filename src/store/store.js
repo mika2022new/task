@@ -21,6 +21,3 @@ export const store = createStore(rootReducer, applyMiddleware(thunk));
 //     },
 // });
 
-
-
-// 1.06

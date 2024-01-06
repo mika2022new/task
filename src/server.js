@@ -2,7 +2,7 @@ import express from "express";
 // import { createServer } from "node:http";
 // import { Server } from "socket.io";
 import cors from "cors";
-import { orders, products } from "../mockData.js";
+import { orders, products, deleteProductByID, deleteOrderByID } from "../mockData.js";
 
 const app = express();
 app.use(cors());
@@ -29,8 +29,36 @@ app.get("/orders", (req, res) => {
   res.send(newOrders);
 });
 
+app.get("/orders/delete", (req, res) => {
+    console.log("req.query - ", req.query);
+
+    
+const { id } = req.query;
+
+    if(id) {
+        deleteOrderByID(id);
+        res.send(true);
+    } else {
+        res.send(false);
+    }
+});
+
 app.get("/products", (req, res) => {
     res.send(products);
+});
+
+app.get("/products/delete", (req, res) => {
+
+    console.log("req.query - ", req.query);
+
+    const { id } = req.query;
+
+        if(id) {
+            deleteProductByID(id);
+            res.send(true);
+        } else {
+            res.send(false);
+        }
 });
 
 app.listen(3002, () => {

@@ -2,7 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./arrivalItem.css";
 
-function getLongItem(title, length, date, value, symbol) {
+import { useDispatch} from "react-redux";
+import { deleteOrderByID } from "../../../store/old_reducerOrders";
+
+import ButtonDelete from "../../buttonDelete/buttonDelete";
+
+
+// function getLongItem(title, length, date, value, symbol) {
+function getLongItem(item, value, symbol, handleClickDelete) {
+
+  const {title, length, date, id} = item;
+
   return (
   <div className="item-content">
     <div className="item-content__title">{title}</div>
@@ -20,6 +30,10 @@ function getLongItem(title, length, date, value, symbol) {
         */}
       <div className="price__curency">{`${value} ${symbol}`}</div>
     </div>
+
+    <ButtonDelete onClick={() => handleClickDelete(id)} />
+  
+
 </div>
 
 )};
@@ -30,7 +44,7 @@ function getShortItem(item, onClick) {
 
       <div className="item-count-info">
       <div className="item-count">{item.length}</div>
-      <div className="item-text">{`products`}</div>
+      <div className="item-text">{item.title}</div>
     </div>
 
       <div className="item-content__time">{item.date}</div>
@@ -40,10 +54,19 @@ function getShortItem(item, onClick) {
 
 const ArrivalItem = ({ item, short = false, onClick }) => {
 
+  const dispatch = useDispatch();
+
   const priceListDefault = item.products.reduce((acc, el) => {
     acc = [...acc, ...el.price];
     return acc;
   }, []);
+
+
+  const handleClickDelete = (id) => {
+    dispatch(deleteOrderByID(id));
+
+  }
+  
 
   const totalPriceDefault = priceListDefault.reduce(
     (acc, el) => {
@@ -60,7 +83,9 @@ const ArrivalItem = ({ item, short = false, onClick }) => {
 
   // console.log("totalPriceDefault", item.title, totalPriceDefault);
 
-  return short ? getShortItem(item, onClick) : getLongItem(item.title, item.products.length, item.date, totalPriceDefault.value, totalPriceDefault.symbol);
+  // return short ? getShortItem(item, onClick) : getLongItem(item.title, item.products.length, item.date, totalPriceDefault.value, totalPriceDefault.symbol);
+  return short ? getShortItem(item, onClick) : getLongItem(item, totalPriceDefault.value, totalPriceDefault.symbol, handleClickDelete);
+
 };
 
 // ArrivalItem.defaultProps = {
